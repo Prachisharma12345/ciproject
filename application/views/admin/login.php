@@ -1,7 +1,7 @@
 <?php include ('header.php'); ?>
 <div class="container" style="margin-top:20px;">
 	<h1>Admin Form</h1>
-	<?php echo form_open('admin/login'); ?>
+	<?php echo form_open('login/index'); ?>
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group">
