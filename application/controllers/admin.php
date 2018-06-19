@@ -1,39 +1,13 @@
 <?php
 class admin extends MY_Controller
 {
-	public function login() {
-		$this->form_validation->set_rules('uname','username','required|alpha');
-		$this->form_validation->set_rules('pass','password','required|max_length[12]');
-		$this->form_validation->set_error_delimiters('<div class="text-danger">','</div>');
-		if($this->form_validation->run()){
-			$uname=$this->input->post('uname');
-			$pass=$this->input->post('pass');
-			$this->load->model('loginmodel');
-			$login_id=$this->loginmodel->isvalidate($uname,$pass);
-			if($login_id){
-				$this->session->set_userdata('id',$login_id);
-				return redirect('admin/welcome');
-			}
-			else{
-				echo "detail not matched";
-			}
-		}
-		else{
-			$this->load->view('admin/login');
-		}
-
-	}
-
-
 	public function welcome()
 	{
-		if( ! $this->session->userdata('id') )
-			return redirect('admin/login'); 	
+			
 		$this->load->model('loginmodel','ar');
 		$articles=$this->ar->articlelist();
 		$this->load->view('admin/dashboard',['articles'=>$articles]);
 	}
-
 	public function adduser(){
 
 	}
@@ -44,19 +18,16 @@ class admin extends MY_Controller
 	public function deluser(){
 		
 	}
-
-	public function logout() {
-		$this->session->unset_userdata('id');
-		return redirect('admin/login');
-	}
-	
-	/*public function __construct() {
+	public function __construct() {
 		parent::__construct();
 		if( ! $this->session->userdata('id') )
-			return redirect('admin/login'); 
+			return redirect('login'); 
 		
-	}	*/
-
+	}	
+	public function logout() {
+		$this->session->unset_userdata('id');
+		return redirect('login');
+	}
 	public function sendemail()
 	{
 		$this->form_validation->set_rules('uname','username','required|alpha');
