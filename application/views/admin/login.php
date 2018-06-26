@@ -1,6 +1,15 @@
 <?php include ('header.php'); ?>
 <div class="container" style="margin-top:20px;">
 	<h1>Admin Form</h1>
+	<?php if($error=$this->session->flashdata('Login_failed')) : ?>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="alert alert-danger">
+					<?php echo $error; ?>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
 	<?php echo form_open('login/index'); ?>
 	<div class="row">
 		<div class="col-lg-6">

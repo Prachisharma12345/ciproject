@@ -1,6 +1,11 @@
 <?php include('header.php'); ?>
 <html>
 <div class="container" style="margin-top: 50px;">
+	<div class="row">
+		<a href="adduser" class="btn btn-lg btn-primary">Add Articles </a>
+	</div>
+</div>
+<div class="container" style="margin-top: 50px;">
 	<div class="table">
 		<table>
 			<thead>
