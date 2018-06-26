@@ -9,7 +9,15 @@ class admin extends MY_Controller
 		$this->load->view('admin/dashboard',['articles'=>$articles]);
 	}
 	public function adduser(){
-
+		$this->load->view('admin/add_article');
+	}
+	public function userValidation(){
+		if($this->form_validation->run('add_article_rules')) {
+			echo "ok";
+		}
+		else {
+			$this->load->view('admin/add_article');
+		}
 	}
 	public function edituser(){
 		
